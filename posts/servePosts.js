@@ -12,11 +12,20 @@ const postFiles = getAllFiles("./posts")
 const servePosts = ({ req, sendFile, pathname }) => {
     const post = postFiles.find(({ url }) => url === pathname);
 
-    if (req.method === "GET" && post) {
-        sendFile("./templates/post.html", {
-            content: post.content,
-        });
-        return true;
+    if (req.method === "GET") {
+        if (post) {
+            sendFile("./templates/post.html", {
+                content: post.content,
+            });
+
+            return true;
+        } else if (pathname === "") {
+            sendFile("./templates/index.html", {
+                posts: postFiles,
+            });
+
+            return true;
+        }
     }
 
     return false;

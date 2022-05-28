@@ -1,8 +1,10 @@
-import getContentType from "./getContentType.js"
-import readFile from "./readFile.js"
+import getContentType from "./getContentType.js";
+import readFile from "./readFile.js";
+
+import TemplatingEngine from "../lib/TemplatingEngine.js";
 
 const createUtils = (req, res) => {
-    const pathname = req.url.substring(1)
+    const pathname = req.url.substring(1);
 
     return {
         req,
@@ -10,30 +12,21 @@ const createUtils = (req, res) => {
 
         pathname,
         status(code) {
-            res.statusCode = code
+            res.statusCode = code;
         },
         error(code, message) {
-            res.statusCode = code
-            res.setHeader("Content-Type", getContentType(".txt"))
-            res.end(`[error] ${code} ${message}`, "utf-8")  
+            res.statusCode = code;
+            res.setHeader("Content-Type", getContentType(".txt"));
+            res.end(`[error] ${code} ${message}`, "utf-8");
         },
-        sendFile(pathname, data={}) {
-            res.statusCode = 200
-            res.setHeader("Content-Type", getContentType(pathname))
+        sendFile(pathname, data = {}) {
+            res.statusCode = 200;
+            res.setHeader("Content-Type", getContentType(pathname));
 
-            // very basic template "rendering" system
-            let fileContents = readFile(pathname)
-            for(const [key, value] of Object.entries(data)) {
-                fileContents = fileContents.replace(
-                    new RegExp(`{{${key}}}`, 'g'),
-                    value
-                )
-            }
-            
-            res.end(fileContents, "utf-8")
-        }
-    }
-    
-}
+            const engine = new TemplatingEngine(readFile(pathname), data);
+            res.end(engine.compile(), "utf-8");
+        },
+    };
+};
 
-export default createUtils
+export default createUtils;

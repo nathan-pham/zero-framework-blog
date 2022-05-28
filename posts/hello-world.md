@@ -21,4 +21,4 @@ Here are some important milestones in this project:
 
 1. Day 1: new Replit project to serve static resources
 2. Day 2 - 3: created a [Markdown renderer](https://github.com/nathan-pham/markdown-renderer) from scratch
-3. Day 4:
+3. Day 4: created a [Templating Engine](https://github.com/nathan-pham/templating-engine) from scratch
