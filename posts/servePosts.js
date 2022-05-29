@@ -20,13 +20,13 @@ const servePosts = ({ req, sendFile, pathname }) => {
     if (req.method === "GET") {
         if (post) {
             sendFile("./templates/post.html", {
-                content: post.content,
+                post,
             });
 
             return true;
         } else if (pathname === "") {
             sendFile("./templates/index.html", {
-                posts: postFiles.map((post) => post.metadata),
+                posts: postFiles,
             });
 
             return true;

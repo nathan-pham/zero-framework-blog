@@ -1,7 +1,7 @@
 ---
 title: My First Zero Post
 emoji: 🚀
-updated: 5/28/2022
+date: 5/28/2022
 ---
 
 # Hello World

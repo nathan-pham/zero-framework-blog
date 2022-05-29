@@ -9,6 +9,8 @@
     --c-secondary-bg: #f2f5f9;
     --c-article-bg: #d8edff;
 
+    --c-shadow: #0000000d;
+
     --c-primary: #51a6ee;
     --c-primary-hover: #3381c5;
 
@@ -42,6 +44,7 @@ body {
     box-sizing: inherit;
 }
 
+/* utilities */
 .bg-wrapper {
     background-color: var(--c-bg);
     width: 100%;
@@ -53,6 +56,12 @@ button {
     border: none;
     font-size: 100%;
     cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-inter);
 }
 
 @media only screen and (max-width: 768px) {
