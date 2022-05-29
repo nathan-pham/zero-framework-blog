@@ -1,0 +1,45 @@
+<style>
+    .profile {
+        display: flex;
+        gap: 2rem;
+        padding: 2rem var(--px);
+        max-width: var(--max-w-sm);
+        margin: 0 auto;
+    }
+
+    .profile__avatar {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 100%;
+        border: 1px solid var(--c-secondary-bg);
+    }
+
+    .profile__description h1 {
+        font-family: var(--font-inter);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .profile__description p {
+        margin: 1rem 0;
+        max-width: 80%;
+    }
+</style>
+
+<section class="profile">
+    <img
+        class="profile__avatar"
+        src="https://pbs.twimg.com/profile_images/1520125126271922179/ds8zJhJV_400x400.jpg"
+    />
+
+    <div class="profile__description">
+        <h1>Nathan Pham</h1>
+        <p>
+            Mathematician, designer, farmer, student. Engineer would be
+            stretching the titles a bit.
+        </p>
+
+        {{ return import("templates/components/profile/profile_socials.html") }}
+    </div>
+</section>
