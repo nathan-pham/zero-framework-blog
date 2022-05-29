@@ -105,7 +105,9 @@
                 words
             </td>
 
-            <td>approx. {{post.content.split(' ').length}}</td>
+            <td>
+                approx. {{Math.ceil(post.content.split(' ').length / 10) * 10}}
+            </td>
         </tr>
     </table>
 </div>

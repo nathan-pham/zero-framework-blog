@@ -24,3 +24,21 @@ Here are some important milestones in this project:
 1. Day 1: new Replit project to serve static resources
 2. Day 2 - 3: created a [Markdown renderer](https://github.com/nathan-pham/markdown-renderer) from scratch
 3. Day 4: created a [Templating Engine](https://github.com/nathan-pham/templating-engine) from scratch
+4. Day 5 - 6: created primary styles for the home and post page
+
+## Example Markdown Supported
+
+Just testing out some styles for the `Markdown` renderer. Here's my Twitter banner:
+![twitter banner](https://pbs.twimg.com/profile_banners/1318662212374786048/1647636453/1500x500)
+
+Here's a code block:
+
+```js
+let x = 10;
+x += 10;
+```
+
+Here's a blockquote:
+
+> A wise man once said "eat goldfish"
+> And I was very surprised

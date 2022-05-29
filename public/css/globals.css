@@ -14,6 +14,8 @@
     --c-primary: #51a6ee;
     --c-primary-hover: #3381c5;
 
+    --c-replit-editor: #1e2333;
+
     --font-base: -apple-system, "BlinkMacSystemFont",
         "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif,
         "Segoe UI Emoji";
@@ -33,7 +35,7 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: var(--font-base);
+    font-family: var(--font-inter);
     color: var(--c-body);
     background: var(--c-secondary-bg);
 }
@@ -60,14 +62,6 @@ button {
     border: none;
     font-size: 100%;
     cursor: pointer;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-family: var(--font-inter);
 }
 
 @media only screen and (max-width: 768px) {

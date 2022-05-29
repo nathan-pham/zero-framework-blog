@@ -51,10 +51,11 @@ hr {
     gap: 1.75rem;
 }
 
-.markdown__profile img {
+.markdown__content .markdown__profile img {
     border-radius: 100%;
     height: 6rem;
     width: 6rem;
+    border: 1px solid var(--c-secondary-bg);
 }
 
 .markdown__profile h1 {
@@ -66,4 +67,44 @@ hr {
 .markdown__profile p {
     margin: 1rem 0;
     max-width: 80%;
+}
+
+/* markdown styles */
+.markdown__content {
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.markdown__content img {
+    max-width: 100%;
+    border-radius: 0.75rem;
+}
+
+.markdown__content code[data-type="inline"] {
+    border-radius: 0.25rem;
+    background-color: var(--c-article-bg);
+    padding: 0 0.25rem;
+    color: var(--c-primary-hover);
+    font-size: 1rem;
+}
+
+.markdown__content a {
+    color: var(--c-primary);
+    text-decoration: none;
+}
+
+.markdown__content a:hover {
+    text-decoration: underline;
+}
+
+.markdown__content pre {
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background-color: var(--c-replit-editor);
+    color: #fff;
+}
+
+.markdown__content blockquote {
+    border-left: 0.125rem solid var(--c-article-bg);
+    padding-left: 1rem;
 }
