@@ -1,6 +1,7 @@
 <style>
     .profile {
         display: flex;
+        align-items: center;
         gap: 2rem;
         padding: 2rem var(--px);
         max-width: var(--max-w-sm);
@@ -40,8 +41,8 @@
                 stretching the titles a bit.
             </p>
 
-            {{ return
-            import("templates/components/profile/profile__socials.html") }}
+            <!-- prettier-ignore -->
+            {{ return import("templates/components/profile/profile__socials.html") }}
         </div>
     </section>
 </div>

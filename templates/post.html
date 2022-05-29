@@ -15,10 +15,35 @@
                 </div>
 
                 <div class="markdown">
-                    <div class="markdown__content">{{post.content}}</div>
-                    <div class="markdown__profile"></div>
+                    <div class="markdown__content">
+                        {{post.content}}
+                        <hr />
+
+                        <!-- prettier-ignore -->
+                        <section class="markdown__profile">
+                            <img
+                                src="https://pbs.twimg.com/profile_images/1520125126271922179/ds8zJhJV_400x400.jpg"
+                            />
+                    
+                            <div>
+                                <h1>Nathan Pham</h1>
+                                <p>
+                                    Mathematician, designer, farmer, student. Engineer would be
+                                    stretching the titles a bit.
+                                </p>
+                    
+                                <!-- prettier-ignore -->
+                                {{ return import("templates/components/profile/profile__socials.html") }}
+                            </div>
+                        </section>
+                    </div>
+
+                    {{ return import("templates/components/post__details.html")
+                    }}
                 </div>
             </main>
+
+            {{ return import("templates/components/footer.html") }}
         </div>
     </body>
 </html>

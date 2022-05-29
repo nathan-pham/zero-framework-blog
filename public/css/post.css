@@ -1,7 +1,7 @@
 .post {
     max-width: var(--max-w-lg);
     padding: 0 var(--px);
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
 }
 
 .post__emoji {
@@ -16,14 +16,21 @@
 
 .post__emoji h2 {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 800;
     margin: 1rem 0 0 0;
     color: var(--c-head);
 }
 
+.markdown {
+    margin: 2rem 0 0 0;
+    display: flex;
+    gap: 2rem;
+
+    position: relative;
+}
+
 .markdown__content {
     padding: 2rem;
-    margin: 2rem 0 0 0;
     border-radius: 0.75rem;
     background-color: var(--c-bg);
     box-shadow: 0 0.25rem 0.5rem var(--c-shadow);
@@ -33,14 +40,30 @@
     margin-top: 0;
 }
 
-/* <main class="post">
-<div class="post__emoji">
-    <h1>{{post.metadata.emoji}}</h1>
-    <h2>{{post.metadata.title}}</h2>
-</div>
+hr {
+    margin: 1.5rem 0;
+    border: 1px solid var(--c-secondary-bg);
+}
 
-<div class="markdown">
-    <div class="markdown__content">{{post.content}}</div>
-    <div class="markdown__profile"></div>
-</div>
-</main> */
+.markdown__profile {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.75rem;
+}
+
+.markdown__profile img {
+    border-radius: 100%;
+    height: 6rem;
+    width: 6rem;
+}
+
+.markdown__profile h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.markdown__profile p {
+    margin: 1rem 0;
+    max-width: 80%;
+}

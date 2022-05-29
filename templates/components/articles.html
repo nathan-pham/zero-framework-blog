@@ -2,7 +2,7 @@
     .articles {
         padding: 0 var(--px);
         max-width: var(--max-w-sm);
-        margin: 0 auto;
+        margin: 0 auto 2rem auto;
     }
 
     .articles > h2 {
@@ -18,7 +18,7 @@
     }
 
     .article {
-        border-radius: 0.5rem;
+        border-radius: 0.75rem;
         overflow: hidden;
         background: var(--c-bg);
         transition: transform 100ms ease-out, box-shadow 100ms ease-out;
@@ -66,17 +66,16 @@
     <h2>Articles</h2>
 
     <div class="articles__grid">
-        {{ return posts.map(({ metadata, url }) => { const daysAgo = Math.ceil(
-        (new Date(metadata.date).getTime() - new Date().getTime()) / (1000 * 60
-        * 60 * 24) ); return `
+        {{ return posts.map(({ metadata, url }) => { const daysAgo =
+        Math.abs(Math.ceil( (new Date(metadata.date).getTime() - new
+        Date().getTime()) / (1000 * 60 * 60 * 24))); return `
         <article class="article">
             <a href="/${url}">
                 <div class="article__emoji">${metadata.emoji}</div>
                 <div class="article__content">
                     <h3>${metadata.title}</h3>
                     <p>
-                        ${daysAgo === 0 ? "hot off the press" : daysAgo + " days
-                        ago" }
+                        ${daysAgo === 0 ? "hot off the press" : daysAgo + " days ago" }
                     </p>
                 </div>
             </a>

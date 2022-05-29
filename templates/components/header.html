@@ -9,7 +9,11 @@
         margin: 0 auto;
     }
 
-    .header h1 {
+    .header__logo {
+        text-decoration: none;
+    }
+
+    .header__logo h1 {
         font-size: 1.75rem;
         margin: 0;
         color: var(--c-head);
@@ -39,9 +43,11 @@
     }
 </style>
 
-<div class="bg-wrapper">
-    <header class="header">
-        <h1>0️⃣ Framework Blog</h1>
+<header class="bg-wrapper">
+    <div class="header">
+        <a href="/" class="header__logo">
+            <h1>0️⃣ Framework Blog</h1>
+        </a>
 
         <div class="header__options">
             <svg
@@ -58,5 +64,5 @@
             </svg>
             <button>Log in</button>
         </div>
-    </header>
-</div>
+    </div>
+</header>
