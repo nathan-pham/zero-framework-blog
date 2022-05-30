@@ -2,6 +2,8 @@ import getAllFiles from "../utils/getAllFiles.js";
 import readFile from "../utils/readFile.js";
 import Markdown from "../lib/Markdown.js";
 
+import config from "../config.js";
+
 const postFiles = getAllFiles("./posts")
     .filter((path) => !path.endsWith("servePosts.js"))
     .map((url) => {
@@ -23,12 +25,14 @@ const servePosts = ({ req, sendFile, pathname }) => {
         if (post) {
             sendFile("./templates/post.html", {
                 post,
+                config
             });
 
             return true;
         } else if (pathname === "") {
             sendFile("./templates/index.html", {
                 posts: postFiles,
+                config
             });
 
             return true;
