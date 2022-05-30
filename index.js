@@ -21,8 +21,8 @@ TODO:
     - tweet & like stuff
     - comments
 
-- editor with notion-like-stuff
-- only template with landing page opening
+- only template with landing page opening + tutorial
+
 - meta tags for images
 - syntax highlighting
 - search + tags

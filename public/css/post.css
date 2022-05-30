@@ -15,7 +15,7 @@
 }
 
 .post__emoji h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 800;
     margin: 1rem 0 0 0;
     color: var(--c-head);
@@ -120,6 +120,6 @@ hr {
 }
 
 .markdown__content blockquote {
-    border-left: 0.125rem solid var(--c-article-bg);
+    border-left: 0.25rem solid var(--c-article-bg);
     padding-left: 1rem;
 }

@@ -15,8 +15,18 @@
 
     .header__logo h1 {
         font-size: 1.75rem;
+        font-weight: 600;
         margin: 0;
         color: var(--c-head);
+    }
+
+    .header__logo h1 > span {
+        vertical-align: middle;
+        line-height: 1;
+    }
+
+    .header__logo h1 > span:last-child {
+        font-size: 1.25rem;
     }
 
     .header__options {
@@ -46,7 +56,7 @@
 <header class="bg-wrapper">
     <div class="header">
         <a href="/" class="header__logo">
-            <h1>0️⃣ Framework Blog</h1>
+            <h1><span>0️⃣</span> <span>Framework Blog</span></h1>
         </a>
 
         <div class="header__options">

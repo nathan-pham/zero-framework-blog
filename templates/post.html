@@ -3,6 +3,7 @@
     <head>
         {{ return import("templates/components/seo.html") }}
         <link rel="stylesheet" href="/public/css/post.css" />
+        <script src="/public/js/post.js" type="module"></script>
     </head>
     <body>
         <div id="app">
@@ -20,7 +21,9 @@
                             ((post.metadata.tags || []).split(',')).map(tag => `<span class="markdown__tag"># ${tag}</span>`).join(' ')
                         }}
 
-                        {{post.content}}
+                        <div class="markdown__content__html">
+                            {{post.content}}
+                        </div>
                         <hr />
 
                         <!-- prettier-ignore -->

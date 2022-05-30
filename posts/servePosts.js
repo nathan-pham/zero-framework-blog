@@ -5,12 +5,14 @@ import Markdown from "../lib/Markdown.js";
 const postFiles = getAllFiles("./posts")
     .filter((path) => !path.endsWith("servePosts.js"))
     .map((url) => {
-        const markdown = new Markdown(readFile(url));
+        const raw = readFile(url);
+        const markdown = new Markdown(raw);
 
         return {
             url: url.replace(".md", ""),
             content: markdown.render(),
             metadata: markdown.metadata,
+            tokens: markdown.tokens,
         };
     });
 
