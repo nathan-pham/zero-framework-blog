@@ -17,7 +17,19 @@ createServer((req, res) => {
 
 /*
 TODO:
-3. replit auth to update/edit posts
-4. comments
-5. editor with notion-like-stuff
+- replit auth to update/edit posts
+    - tweet & like stuff
+    - comments
+
+- editor with notion-like-stuff
+- only template with landing page opening
+- meta tags for images
+- syntax highlighting
+- search + tags
+
+- spa functionality
+- tooltips
+- animations
+
+- responsive design
 */

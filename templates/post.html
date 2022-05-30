@@ -16,6 +16,10 @@
 
                 <div class="markdown">
                     <div class="markdown__content">
+                        {{
+                            ((post.metadata.tags || []).split(',')).map(tag => `<span class="markdown__tag"># ${tag}</span>`).join(' ')
+                        }}
+
                         {{post.content}}
                         <hr />
 

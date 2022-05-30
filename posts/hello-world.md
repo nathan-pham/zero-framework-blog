@@ -2,6 +2,7 @@
 title: My First Zero Post
 emoji: 🚀
 date: 5/28/2022
+tags: tech, markdown
 ---
 
 # Hello World
