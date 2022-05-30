@@ -1,4 +1,8 @@
 import { $, $$ } from "./utils/query.js";
+import tweet from "./tweet.js"
+
+// make anchor direct to tweet
+tweet($(".post__tweet a"))
 
 const postSummaryList = $(".post__summary__list");
 const postSummaryItems = $$(postSummaryList, "li");
@@ -23,6 +27,7 @@ const setActive = (i) => {
     }
 };
 
+// scroll to clicked item
 postSummaryItems.forEach((item, i) => {
     item.addEventListener("click", () => {
         location.hash = item.textContent;
@@ -30,14 +35,12 @@ postSummaryItems.forEach((item, i) => {
     });
 });
 
+// change active item in table of contents on scroll
 const onScroll = () => {
     for (let i = 0; i < markdownItems.length; i++) {
-        const item = markdownItems[i]
+        const item = markdownItems[i];
 
-        if (
-            Math.abs(item.getBoundingClientRect().top) <
-            item.offsetHeight
-        ) {
+        if (Math.abs(item.getBoundingClientRect().top) < item.offsetHeight) {
             setActive(
                 postSummaryItems.indexOf(
                     postSummaryItems.find(
@@ -50,7 +53,7 @@ const onScroll = () => {
             return;
         }
     }
-}
+};
 
 window.addEventListener("scroll", onScroll);
-onScroll();
+setActive(0);

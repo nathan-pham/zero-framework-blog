@@ -62,6 +62,8 @@
         padding: 0 0 0 var(--padding-left);
         margin: 1rem 0 0 0;
         position: relative;
+        max-height: calc(100vh - 4rem);
+        /* overflow-y: scroll; */
     }
 
     .post__summary__list::before {
@@ -191,8 +193,7 @@
                 </td>
 
                 <td>
-                    approx. {{Math.ceil(post.content.split(' ').length / 10) *
-                    10}}
+                    approx. {{Math.ceil(post.content.split(' ').length / 10) * 10}}
                 </td>
             </tr>
         </table>
