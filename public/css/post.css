@@ -36,17 +36,13 @@
     box-shadow: 0 0.25rem 0.5rem var(--c-shadow);
 }
 
-.markdown__content > *:first-child {
-    margin-top: 0;
-}
-
 hr {
-    margin: 1.5rem 0;
+    margin: 2rem 0;
     border: 1px solid var(--c-secondary-bg);
 }
 
 .markdown__profile {
-    margin-top: 2.5rem;
+    margin: 2rem 0 0 0;
     display: flex;
     gap: 1.75rem;
 }
@@ -85,17 +81,16 @@ hr {
 }
 
 /* markdown styles */
-.markdown__content {
+.markdown__content__html {
     line-height: 1.5;
-    font-size: 1rem;
 }
 
-.markdown__content img {
+.markdown__content__html img {
     max-width: 100%;
     border-radius: 0.75rem;
 }
 
-.markdown__content code[data-type="inline"] {
+.markdown__content__html code[data-type="inline"] {
     border-radius: 0.25rem;
     background-color: var(--c-article-bg);
     padding: 0 0.25rem;
@@ -103,23 +98,23 @@ hr {
     font-size: 1rem;
 }
 
-.markdown__content a {
+.markdown__content__html a {
     color: var(--c-primary);
     text-decoration: none;
 }
 
-.markdown__content a:hover {
+.markdown__content__html a:hover {
     text-decoration: underline;
 }
 
-.markdown__content pre {
+.markdown__content__html pre {
     border-radius: 0.75rem;
     padding: 1rem;
     background-color: var(--c-replit-editor);
     color: #fff;
 }
 
-.markdown__content blockquote {
+.markdown__content__html blockquote {
     border-left: 0.25rem solid var(--c-article-bg);
     padding-left: 1rem;
 }
