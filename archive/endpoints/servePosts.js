@@ -11,35 +11,34 @@ const postFiles = getAllFiles("./posts")
         const markdown = new Markdown(raw);
 
         return {
-            url: url.replace(".md", ""),
+            url: "/" + url.replace(".md", ""),
             content: markdown.render(),
             metadata: markdown.metadata,
             tokens: markdown.tokens,
         };
     });
 
-const servePosts = ({ req, sendFile, pathname }) => {
-    const post = postFiles.find(({ url }) => url === pathname);
+const servePosts = ({ req, sendFile, url }) => {
+    const post = postFiles.find((post) => post.url === url.pathname);
 
     if (req.method === "GET") {
         if (post) {
             sendFile("./templates/post.html", {
                 post,
-                config
+                config,
             });
 
             return true;
-        } else if (pathname === "") {
+        } else if (url.pathname === "/") {
             sendFile("./templates/index.html", {
                 posts: postFiles,
-                config
+                config,
             });
 
             return true;
         }
     }
-
-    return false;
 };
 
 export default servePosts;
+export { postFiles };

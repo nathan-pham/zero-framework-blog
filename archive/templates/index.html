@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{ return import("templates/components/seo.html") }}
+    </head>
+    <body>
+        <div id="app">
+            <!-- prettier-ignore -->
+
+            <div class="footer-margin">
+                {{ return import("templates/components/header.html") }} 
+                {{ return import("templates/components/profile/profile.html") }}
+
+                {{ return import("templates/components/articles.html") }}    
+            </div>
+
+            {{ return import("templates/components/footer.html") }}
+        </div>
+    </body>
+</html>

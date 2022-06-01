@@ -1,18 +1,22 @@
 {
-    "name": "modern-zero-framework-blog",
+    "name": "zero-framework-blog",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js",
-        "dev": "nodemon index.js"
+        "start": "node --experimental-specifier-resolution=node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nathan-pham/zero-framework-blog.git"
     },
     "keywords": [],
-    "author": "",
+    "author": "Nathan Pham",
     "license": "ISC",
-    "devDependencies": {
-        "nodemon": "^2.0.16"
-    }
+    "bugs": {
+        "url": "https://github.com/nathan-pham/zero-framework-blog/issues"
+    },
+    "homepage": "https://github.com/nathan-pham/zero-framework-blog#readme"
 }

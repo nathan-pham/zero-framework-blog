@@ -1,5 +1,5 @@
 import { $, $$ } from "./utils/query.js";
-import tweet from "./tweet.js"
+import tweet from "./utils/tweet.js"
 
 // make anchor direct to tweet
 tweet($(".post__tweet a"))

@@ -2,15 +2,14 @@ import getContentType from "./getContentType.js";
 import readFile from "./readFile.js";
 
 import TemplatingEngine from "../lib/TemplatingEngine.js";
+import config from "../config.js";
 
 const createUtils = (req, res) => {
-    const pathname = req.url.substring(1);
-
     return {
         req,
         res,
 
-        pathname,
+        url: new URL(`http://localhost:${config.port}${req.url}`),
         status(code) {
             res.statusCode = code;
         },
