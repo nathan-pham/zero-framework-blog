@@ -1,3 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+:root {
+    --c-body: #2e2e2e;
+    --c-head: #111111;
+    --c-gray: #97a5b1;
+
+    --c-bg: #ffffff;
+    --c-secondary-bg: #f2f5f9;
+    --c-article-bg: #d8edff;
+
+    --c-shadow: #0000000d;
+
+    --c-primary: #51a6ee;
+    --c-primary-hover: #3381c5;
+
+    --c-replit-editor: #1e2333;
+
+    --font-base: -apple-system, "BlinkMacSystemFont",
+        "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif,
+        "Segoe UI Emoji";
+    --font-inter: "Inter", sans-serif;
+
+    --svg-width: 1.4rem;
+    --px: 2.5rem;
+
+    --max-w-sm: 60rem;
+    --max-w-lg: 75rem;
+}
+
 html,
 body {
     height: 100%;
@@ -5,10 +35,16 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Inter", sans-serif;
 }
 
 *,
 ::before,
 ::after {
     box-sizing: inherit;
+}
+
+/* global resets */
+a {
+    cursor: pointer;
 }

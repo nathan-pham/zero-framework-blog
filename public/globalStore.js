@@ -2,7 +2,6 @@ import { ZeroStore } from "/lib/Zero.js";
 
 const globalStore = new ZeroStore(
     {
-        params: {},
         routes: [],
         page: {
             view: [],
@@ -11,9 +10,8 @@ const globalStore = new ZeroStore(
     },
     (state, action) => {
         switch (action.type) {
-            case types.viewChange:
+            case types.routerNavigateTo:
                 return {
-                    ...state,
                     page: action.payload,
                 };
 
@@ -24,7 +22,7 @@ const globalStore = new ZeroStore(
 );
 
 const types = {
-    viewChange: "app/viewChange",
+    routerNavigateTo: "router/navigateTo",
 };
 
 export default globalStore;

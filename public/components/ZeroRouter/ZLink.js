@@ -5,7 +5,7 @@ Zero.define(
     "z-link",
     class ZLink extends Zero {
         render() {
-            return ZeroUtils.jsh.a(
+            return ZeroUtils.jsh.span(
                 {
                     href: this.props.href,
                     onClick: (e) => {

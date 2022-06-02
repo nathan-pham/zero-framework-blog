@@ -49,8 +49,9 @@ export default class ZRouter extends Zero {
         }
 
         const match = ZRouter.getMatch(globalStore.state.routes);
-        Object.assign(globalStore.state, {
-            page: {
+        globalStore.dispatch({
+            type: types.routerNavigateTo,
+            payload: {
                 view: match.route.view,
                 params: ZRouter.getParams(match),
             },
@@ -66,10 +67,7 @@ export default class ZRouter extends Zero {
             }));
 
         ZRouter.navigateTo();
-
-        window.addEventListener("popstate", () => {
-            ZRouter.navigateTo();
-        });
+        window.addEventListener("popstate", () => ZRouter.navigateTo());
     }
 
     render() {

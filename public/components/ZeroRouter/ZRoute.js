@@ -1,10 +1,4 @@
-import Zero from "/lib/Zero.js";
+import Zero, { ZeroUtils } from "/lib/Zero.js";
 
-Zero.define(
-    "z-route",
-    class ZRoute extends Zero {
-        render() {
-            return null;
-        }
-    }
-);
+// should literally render nothing, z-router handles it
+Zero.define("z-route", class ZRoute extends Zero {});
