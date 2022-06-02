@@ -4,6 +4,15 @@
         {{ return import("templates/seo.html") }}
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app">
+            <z-router>
+                <z-route path="/">
+                    <z-link href="/posts/example">Link</z-link>
+                </z-route>
+                <z-route path="/posts/:id">
+                    <p>hello world this is a post</p>
+                </z-route>
+            </z-router>
+        </div>
     </body>
 </html>

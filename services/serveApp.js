@@ -1,4 +1,6 @@
 export default (utils) => {
-    utils.renderFile("templates/index.html");
-    return true;
+    if (utils.req.method === "GET") {
+        utils.renderFile("templates/index.html");
+        return true;
+    }
 };
