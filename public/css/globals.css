@@ -33,6 +33,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: var(--font-inter);
+    background-color: var(--c-secondary-bg);
 }
 
 *,
