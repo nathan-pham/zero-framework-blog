@@ -26,6 +26,7 @@ const styles = {
     profileBio: {
         margin: "0.75rem 0",
         maxWidth: "80%",
+        color: "var(--c-body)",
     },
 };
 

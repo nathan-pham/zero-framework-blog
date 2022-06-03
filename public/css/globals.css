@@ -6,13 +6,13 @@
     --c-gray: #97a5b1;
 
     --c-bg: #ffffff;
-    --c-secondary-bg: #f9f2f2;
-    --c-article-bg: #ffd8d8;
+    --c-secondary-bg: #f9f6f2;
+    --c-article-bg: #fff3d8;
 
     --c-shadow: #0000000d;
 
-    --c-primary: #ff6464;
-    --c-primary-hover: #fe4848;
+    --c-primary: #ffce64;
+    --c-primary-hover: #fec448;
 
     --c-replit-editor: #1e2333;
 
@@ -21,8 +21,8 @@
     --svg-width: 1.4rem;
     --px: 2.5rem;
 
-    --max-w-sm: 60rem;
-    --max-w-lg: 75rem;
+    --max-w-sm: 55rem;
+    --max-w-lg: 70rem;
 }
 
 html,

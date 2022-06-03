@@ -25,9 +25,34 @@ Zero.define(
             }
         `;
 
+        onResize() {
+            const footer = ZeroUtils.$(this.shadowRoot, ".target");
+
+            Object.assign(footer.style, {
+                position: "static",
+            });
+
+            if (footer.offsetTop + footer.offsetHeight < window.innerHeight) {
+                Object.assign(footer.style, {
+                    position: "fixed",
+                    bottom: "0",
+                });
+            }
+        }
+
+        mount() {
+            // keep footer at bottom if not enough content
+            window.addEventListener("resize", this.onResize.bind(this));
+            this.onResize();
+        }
+
+        unmount() {
+            window.removeEventListener("resize", this.onResize.bind(this));
+        }
+
         render() {
             return h.footer(
-                { style: globalStyles.bgWrapper },
+                { class: "target", style: globalStyles.bgWrapper },
                 h.div(
                     { style: styles.footerDiv },
                     "Created by ",

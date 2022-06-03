@@ -19,13 +19,21 @@
                             personal="{{ author.links.personal }}"
                         ></z-profile-socials>
                     </z-profile>
+                    <z-articles>
+                        {{ 
+                            return posts.map(({ url, markdown: { metadata } }) => `
+                                <z-article
+                                    href="/posts/${url}"
+                                    title="${metadata.title}"
+                                    emoji="${metadata.emoji}"
+                                    date="${metadata.date}"
+                                ></z-article>
+                            `).join("\n")
+                        }}
+                    </z-articles>
                     <z-footer></z-footer>
-                    <z-link href="/posts/example">link</z-link>
                 </z-route>
-                <z-route path="/posts/:id">
-                    <p>hello world this is a post</p>
-                    <z-link href="/">home</z-link>
-                </z-route>
+                <z-route path="/posts/:id"></z-route>
             </z-router>
         </div>
     </body>
