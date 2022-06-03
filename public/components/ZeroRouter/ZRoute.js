@@ -7,7 +7,6 @@ Zero.define(
         store = globalStore;
 
         render() {
-            console.log("render");
             return globalStore.state.page.path === this.props.path
                 ? ZeroUtils.jsh.slot()
                 : null;

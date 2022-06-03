@@ -4,10 +4,17 @@ import config from "../config";
 
 const postsDirectory = "posts";
 const postFiles = ZeroServerUtils.getAllFiles(postsDirectory).map(
-    (filename) => ({
-        url: filename.replace(".md", ""),
-        markdown: new ZeroMarkdown(ZeroServerUtils.readFile(filename)),
-    })
+    (filename) => {
+        const zeroMarkdown = new ZeroMarkdown(
+            ZeroServerUtils.readFile(filename)
+        );
+
+        return {
+            url: filename.replace(".md", ""),
+            markdown: zeroMarkdown,
+            content: zeroMarkdown.render(),
+        };
+    }
 );
 
 export default (utils) => {

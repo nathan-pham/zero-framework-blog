@@ -9,14 +9,22 @@ tags: tech, markdown
 
 This blog was created for the [Replit Template Jam](https://blog.replit.com/template-jam).
 
-This is the first post in my new blog! Take a look around. Everything you see (both frontend and backend) is built with vanilla JavaScript. No frameworks or libraries at all. Although my code is pretty crap and is likely not as performant and tested as other maintained frameworks and repositories, it's important to recognize the value of responsible and good-old fashioned code.
+This is the first post in my new blog! Take a look around. Everything is created from scratch, no libraries or frameworks. If you do manage to take a look at the source code, all of the backend and frontend standalone tools I created are usually prefixed with `Zero` (see below for links to those individual projects).
 
-## Replit Features
+Although I used vanilla JS, it is important to recognize the advantages and utility of more maintained repositories, which are generally more performant and tested by thousands of developers.
 
-Ok obviously we didn't use _zero_ libraries or frameworks. We used some cool Replit features!
+## Replit Features (and other mentions)
 
--   Replit Database for comments
--   Replit Auth for comments
+Okay, technically we did use _some_ libraries. We used some cool Replit features!
+
+-   Replit Database: comments
+-   Replit Auth: comments
+
+I'd also like to thank
+
+-   Zenn.dev: primary inspiration for design
+-   Radix: SVG icons
+-   my past self for creating so much random stuff that I could literally just reuse it in this random specific context
 
 ## Project Timeline
 
@@ -26,6 +34,8 @@ Here are some important milestones in this project:
 2. Day 2 - 3: created a [Markdown renderer](https://github.com/nathan-pham/markdown-renderer) from scratch
 3. Day 4: created a [Templating Engine](https://github.com/nathan-pham/templating-engine) from scratch
 4. Day 5 - 6: created primary styles for the home and post page
+5. Day 7 - 8: created Zero Framework
+6. Day 9 - 10: rewrote old frontend with Zero
 
 # Example Markdown Supported
 

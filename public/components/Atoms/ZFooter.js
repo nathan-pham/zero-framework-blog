@@ -14,6 +14,10 @@ const styles = {
 Zero.define(
     "z-footer",
     class ZFooter extends Zero {
+        ref = {
+            animationId: 0,
+        };
+
         style = `
             a {
                 color: var(--c-body);
@@ -25,8 +29,8 @@ Zero.define(
             }
         `;
 
-        onResize() {
-            const footer = ZeroUtils.$(this.shadowRoot, ".target");
+        fixFooter() {
+            const footer = ZeroUtils.$(this.shadowRoot, "footer");
 
             Object.assign(footer.style, {
                 position: "static",
@@ -41,18 +45,22 @@ Zero.define(
         }
 
         mount() {
-            // keep footer at bottom if not enough content
-            window.addEventListener("resize", this.onResize.bind(this));
-            this.onResize();
+            const animate = () => {
+                // keep footer at bottom if not enough content
+                this.fixFooter();
+                this.ref.animationId = requestAnimationFrame(animate);
+            };
+
+            animate();
         }
 
         unmount() {
-            window.removeEventListener("resize", this.onResize.bind(this));
+            cancelAnimationFrame(this.ref.animationId);
         }
 
         render() {
             return h.footer(
-                { class: "target", style: globalStyles.bgWrapper },
+                { style: globalStyles.bgWrapper },
                 h.div(
                     { style: styles.footerDiv },
                     "Created by ",

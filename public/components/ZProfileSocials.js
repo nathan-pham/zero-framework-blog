@@ -11,7 +11,7 @@ const styles = {
 
 Zero.define(
     "z-profile-socials",
-    class ZProfile extends Zero {
+    class ZProfileSocials extends Zero {
         render() {
             const { github, twitter, personal } = this.props;
             const socials = [];

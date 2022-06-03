@@ -2,6 +2,11 @@
 <html lang="en">
     <head>
         {{ return import("templates/seo.html") }}
+
+        <script>
+            window.APP_POSTS = {{ JSON.stringify(posts) }}
+            window.APP_AUTHOR = {{ JSON.stringify(author) }}
+        </script>
     </head>
     <body>
         <div id="app">
@@ -20,21 +25,21 @@
                         ></z-profile-socials>
                     </z-profile>
                     <z-articles>
-                        {{ 
-                            return posts.map(({ url, markdown: { metadata } }) => `
-                                <z-article
-                                    href="/${url}"
-                                    title="${metadata.title}"
-                                    emoji="${metadata.emoji}"
-                                    date="${metadata.date}"
-                                ></z-article>
-                            `).join("\n")
-                        }}
+                        {{ return posts.map(({ url, markdown: { metadata } }) =>
+                        `
+                        <z-article
+                            href="/${url}"
+                            title="${metadata.title}"
+                            emoji="${metadata.emoji}"
+                            date="${metadata.date}"
+                        ></z-article>
+                        `).join("\n") }}
                     </z-articles>
                     <z-footer></z-footer>
                 </z-route>
                 <z-route path="/posts/:id">
                     <z-header></z-header>
+                    <z-dynamic-post></z-dynamic-post>
                     <z-footer></z-footer>
                 </z-route>
             </z-router>
@@ -42,10 +47,15 @@
     </body>
 </html>
 
-<!-- <z-profile type="hero"></z-profile>
-                    <z-articles>
-                        <z-article
-                            title="My First Zero Post"
-                            written="10/10/2020"
-                        ></z-article>
-                    </z-articles> -->
+<!--
+    <z-article-heading></z-article-heading>
+    <z-article-main>
+        <slot name="profile">
+            <z-profile></z-profile>
+        </slot>
+        <slot name="metadata">
+            <z-article-metadata></z-article-metadata>
+            <z-article-table></z-article-table>
+        </slot>
+    </z-article-main>
+-->
