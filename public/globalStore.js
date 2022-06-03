@@ -4,7 +4,7 @@ const globalStore = new ZeroStore(
     {
         routes: [],
         page: {
-            view: [],
+            path: "",
             params: {},
         },
     },

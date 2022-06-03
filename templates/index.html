@@ -23,7 +23,7 @@
                         {{ 
                             return posts.map(({ url, markdown: { metadata } }) => `
                                 <z-article
-                                    href="/posts/${url}"
+                                    href="/${url}"
                                     title="${metadata.title}"
                                     emoji="${metadata.emoji}"
                                     date="${metadata.date}"
@@ -33,7 +33,10 @@
                     </z-articles>
                     <z-footer></z-footer>
                 </z-route>
-                <z-route path="/posts/:id"></z-route>
+                <z-route path="/posts/:id">
+                    <z-header></z-header>
+                    <z-footer></z-footer>
+                </z-route>
             </z-router>
         </div>
     </body>

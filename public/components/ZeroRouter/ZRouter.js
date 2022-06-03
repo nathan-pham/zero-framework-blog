@@ -52,7 +52,7 @@ export default class ZRouter extends Zero {
         globalStore.dispatch({
             type: types.routerNavigateTo,
             payload: {
-                view: match.route.view,
+                path: match.route.path,
                 params: ZRouter.getParams(match),
             },
         });
@@ -63,7 +63,6 @@ export default class ZRouter extends Zero {
             .filter((child) => child.tagName === "Z-ROUTE")
             .map((route) => ({
                 path: route.getAttribute("path"),
-                view: [...route.childNodes],
             }));
 
         ZRouter.navigateTo();
@@ -71,7 +70,7 @@ export default class ZRouter extends Zero {
     }
 
     render() {
-        return ZeroUtils.jsh.fragment({}, globalStore.state.page.view);
+        return ZeroUtils.jsh.fragment({}, ZeroUtils.jsh.slot());
     }
 }
 
