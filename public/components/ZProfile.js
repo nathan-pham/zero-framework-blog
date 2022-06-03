@@ -48,7 +48,8 @@ Zero.define(
                     h.div(
                         {},
                         h.h1({ style: styles.profileName }, name),
-                        h.p({ style: styles.profileBio }, bio)
+                        h.p({ style: styles.profileBio }, bio),
+                        h.slot()
                     )
                 )
             );

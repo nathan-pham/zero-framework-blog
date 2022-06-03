@@ -61,9 +61,9 @@ export default class ZRouter extends Zero {
     mount() {
         globalStore.state.routes = this.props.children
             .filter((child) => child.tagName === "Z-ROUTE")
-            .map((child) => ({
-                path: child.getAttribute("path"),
-                view: [...child.childNodes],
+            .map((route) => ({
+                path: route.getAttribute("path"),
+                view: [...route.childNodes],
             }));
 
         ZRouter.navigateTo();

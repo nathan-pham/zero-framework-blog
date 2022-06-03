@@ -1,30 +1,32 @@
 import Zero, { ZeroUtils } from "/lib/Zero.js";
 import ZRouter from "./ZRouter.js";
 
+const h = ZeroUtils.jsh;
+
 Zero.define(
     "z-link",
     class ZLink extends Zero {
         render() {
-            return ZeroUtils.jsh.span(
+            const { href } = this.props;
+
+            return h.span(
                 {
-                    href: this.props.href,
+                    href,
                     onClick: (e) => {
                         if (
-                            !(
-                                this.props.href.startsWith("#") ||
-                                this.props.href.startsWith("http")
-                            )
+                            href &&
+                            !(href.startsWith("#") || href.startsWith("http"))
                         ) {
                             e.preventDefault();
                             e.stopPropagation();
 
-                            ZRouter.navigateTo(this.props.href);
+                            ZRouter.navigateTo(href);
 
                             return false;
                         }
                     },
                 },
-                this.props.children
+                h.slot()
             );
         }
     }

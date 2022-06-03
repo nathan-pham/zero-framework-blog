@@ -13,22 +13,28 @@
                         name="{{ author.name }}"
                         bio="{{ author.bio }}"
                     >
+                        <z-profile-socials
+                            github="{{ author.links.github }}"
+                            twitter="{{ author.links.twitter }}"
+                            personal="{{ author.links.personal }}"
+                        ></z-profile-socials>
                     </z-profile>
-                    <!-- <z-profile type="hero"></z-profile>
+                    <z-footer></z-footer>
+                    <z-link href="/posts/example">link</z-link>
+                </z-route>
+                <z-route path="/posts/:id">
+                    <p>hello world this is a post</p>
+                    <z-link href="/">home</z-link>
+                </z-route>
+            </z-router>
+        </div>
+    </body>
+</html>
+
+<!-- <z-profile type="hero"></z-profile>
                     <z-articles>
                         <z-article
                             title="My First Zero Post"
                             written="10/10/2020"
                         ></z-article>
                     </z-articles> -->
-                    <z-footer></z-footer>
-                    <!-- {{ author.name }} -->
-                    <!-- <z-link href="/posts/example">Link</z-link> -->
-                </z-route>
-                <z-route path="/posts/:id">
-                    <p>hello world this is a post</p>
-                </z-route>
-            </z-router>
-        </div>
-    </body>
-</html>

@@ -8,3 +8,4 @@ import "/components/Atoms/ZHeader.js";
 import "/components/Atoms/ZFooter.js";
 
 import "/components/ZProfile.js";
+import "/components/ZProfileSocials.js";
