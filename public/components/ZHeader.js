@@ -1,12 +1,6 @@
 import Zero, { ZeroUtils } from "/lib/Zero.js";
 const h = ZeroUtils.jsh;
 
-// header a {
-//     cursor: pointer;
-//     text-decoration: none;
-//     color: var(--c-head);
-// }
-
 Zero.define(
     "z-header",
     class ZHeader extends Zero {
@@ -31,13 +25,19 @@ Zero.define(
                             {
                                 style: {
                                     fontSize: "1.75rem",
+                                    cursor: "pointer",
                                     margin: 0,
+                                    color: "var(--c-head)",
                                 },
                             },
                             "📦 Zero Blog"
                         )
                     )
-                )
+                ),
+                h.zRadixIcon({
+                    type: "magnifyingGlass",
+                    size: "calc(var(--svg-width) * 1.25)",
+                })
             );
         }
     }

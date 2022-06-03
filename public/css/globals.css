@@ -6,19 +6,16 @@
     --c-gray: #97a5b1;
 
     --c-bg: #ffffff;
-    --c-secondary-bg: #f2f5f9;
-    --c-article-bg: #d8edff;
+    --c-secondary-bg: #f9f2f2;
+    --c-article-bg: #ffd8d8;
 
     --c-shadow: #0000000d;
 
-    --c-primary: #51a6ee;
-    --c-primary-hover: #3381c5;
+    --c-primary: #ff6464;
+    --c-primary-hover: #fe4848;
 
     --c-replit-editor: #1e2333;
 
-    --font-base: -apple-system, "BlinkMacSystemFont",
-        "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif,
-        "Segoe UI Emoji";
     --font-inter: "Inter", sans-serif;
 
     --svg-width: 1.4rem;
@@ -35,7 +32,7 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-inter);
 }
 
 *,
