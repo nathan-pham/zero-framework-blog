@@ -51,6 +51,10 @@ Zero.define(
     class ZDynamicPost extends Zero {
         store = globalStore;
 
+        ref = {
+            headings: [],
+        };
+
         style = `
             .markdownTag {
                 padding: 0.5rem 0.75rem;
@@ -105,6 +109,33 @@ Zero.define(
             }
         `;
 
+        jumpPolyfill() {
+            for (const heading of this.ref.headings) {
+                if (location.hash === `#${encodeURI(heading.id)}`) {
+                    heading.scrollIntoView({
+                        behavior: "smooth",
+                    });
+                }
+            }
+        }
+
+        mount() {
+            // man js be making me recreate everything cause it won't auto jump to shadow dom ids
+            window.addEventListener("hashchange", this.jumpPolyfill.bind(this));
+
+            // delay and wait for first render I guess
+            setTimeout(() => {
+                this.jumpPolyfill();
+            }, 100);
+        }
+
+        unmount() {
+            window.removeEventListener(
+                "hashchange",
+                this.jumpPolyfill.bind(this)
+            );
+        }
+
         render() {
             const postId = globalStore.state.page.params.id;
             const postPath = `posts/${postId}`;
@@ -119,6 +150,20 @@ Zero.define(
                 content,
                 markdown: { metadata, tokens },
             } = post;
+
+            const markdownHtml = h.div({
+                class: "markdownHtml",
+                __innerHTML: content,
+            });
+
+            // give all titles ids for jumping
+            this.ref.headings = [...markdownHtml.childNodes].filter((node) =>
+                ["h1", "h2"].includes(node.tagName.toLowerCase())
+            );
+
+            this.ref.headings.forEach((node) => {
+                node.id = node.textContent;
+            });
 
             return h.main(
                 { style: styles.postWrapper },
@@ -143,10 +188,7 @@ Zero.define(
                                       h.span({ class: "markdownTag" }, tag)
                                   )
                             : [],
-                        h.div({
-                            class: "markdownHtml",
-                            __innerHTML: content,
-                        }),
+                        markdownHtml,
                         h.hr({ style: styles.postDivider }),
                         h.zProfile(
                             {
@@ -172,7 +214,6 @@ Zero.define(
                                     ["h1", "h2"].includes(type)
                                 )
                             ),
-                            // .map(({ type, content }))
                         })
                     )
                 )

@@ -7,7 +7,6 @@ const styles = {
     postDetails: {
         ...globalStyles.postContainer,
         padding: "0.25rem 1rem",
-        height: "fit-content",
     },
     postDetailsTable: {
         borderCollapse: "collapse",

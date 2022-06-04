@@ -1,4 +1,4 @@
-import Zero, { ZeroUtils } from "/lib/Zero.js";
+import Zero, { ZeroUtils, ZeroStore } from "/lib/Zero.js";
 import globalStyles from "/globalStyles.js";
 
 const { jsh: h, $ } = ZeroUtils;
@@ -7,8 +7,6 @@ const styles = {
         ...globalStyles.postContainer,
         padding: "1rem",
         marginTop: "2rem",
-        position: "sticky",
-        top: "2rem",
     },
     postSummaryHeading: {
         margin: 0,
@@ -20,106 +18,123 @@ const styles = {
 Zero.define(
     "z-dynamic-summary",
     class ZDynamicSummary extends Zero {
+        store = new ZeroStore({
+            active: 0,
+            sticky: false,
+        });
+
         ref = {
             width: 0,
         };
 
-        style = `
-            .sticky-active {
-                position: fixed;
-                top: 0;
-            }
+        style() {
+            return `
+                .sticky-active {
+                    position: fixed;
+                    top: 0;
+                    width: ${
+                        this.store.state.sticky
+                            ? `calc(${this.ref.width} - 2rem)`
+                            : ""
+                    };
+                }
 
-            .summaryList {
-                --bullet-size: 0.75rem;
-                --padding-left: 2rem;
+                .summaryList {
+                    --bullet-size: 0.75rem;
+                    --padding-left: 2rem;
 
-                list-style: none;
-                padding: 0 0 0 var(--padding-left);
-                margin: 1rem 0 0 0;
-                position: relative;
-                max-height: calc(100vh - 4rem);
-            }
+                    list-style: none;
+                    padding: 0 0 0 var(--padding-left);
+                    margin: 1rem 0 0 0;
+                    position: relative;
+                    max-height: calc(100vh - 4rem);
+                }
 
-            .summaryList::before {
-                content: "";
-                display: block;
-                position: absolute;
-                z-index: 0;
-                height: calc(100% - (var(--bullet-size) * 3));
-                width: 2px;
-                top: var(--bullet-size);
-                transform: translateX(calc(-1 * var(--padding-left) / 2 - 50%));
-                background-color: var(--c-article-bg);
-            }
+                .summaryList::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    z-index: 0;
+                    height: calc(100% - (var(--bullet-size) * 3));
+                    width: 2px;
+                    top: var(--bullet-size);
+                    transform: translateX(calc(-1 * var(--padding-left) / 2 - 50%));
+                    background-color: var(--c-article-bg);
+                }
 
-            .summaryList li {
-                position: relative;
-                cursor: pointer;
-                color: var(--c-gray);
+                .summaryList li {
+                    position: relative;
+                    cursor: pointer;
+                    color: var(--c-gray);
+                }
+            
+                .summaryList h1,
+                .summaryList h2 {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    margin: 0.75rem 0 0 0;
+                }
+            
+                .summaryList h2 {
+                    font-weight: 400;
+                }
+            
+                .summaryList h2::before {
+                    --bullet-size: 0.5rem;
+                }
+            
+                .summaryList h1::before,
+                .summaryList h2::before {
+                    content: "";
+                    display: block;
+                    height: var(--bullet-size);
+                    width: var(--bullet-size);
+                    background-color: var(--c-article-bg);
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%)
+                        translateX(calc(-1 * var(--padding-left) / 2 - 50%));
+                    z-index: 1;
+                    border-radius: 100%;
+                    border: 1px solid var(--c-bg);
+                }
+            
+                .summaryList li.active {
+                    color: var(--c-body);
+                }
+            
+                .summaryList li.active h1::before,
+                .summaryList li.active h2::before {
+                    background-color: var(--c-primary);
+                }
+            `;
+        }
+
+        stickyPolyfill() {
+            const sticky = $(this.shadowRoot, ".sticky");
+            const body = this.shadowRoot.host.parentNode;
+
+            this.store.state.sticky = false;
+            body.style.paddingTop = 0;
+
+            if (window.scrollY >= sticky.offsetTop + 64) {
+                this.store.state.sticky = true;
+                body.style.paddingTop = sticky.offsetTop;
             }
-        
-            .summaryList h1,
-            .summaryList h2 {
-                font-size: 1rem;
-                font-weight: 600;
-                margin: 0.75rem 0 0 0;
-            }
-        
-            .summaryList h2 {
-                font-weight: 400;
-            }
-        
-            .summaryList h2::before {
-                --bullet-size: 0.5rem;
-            }
-        
-            .summaryList h1::before,
-            .summaryList h2::before {
-                content: "";
-                display: block;
-                height: var(--bullet-size);
-                width: var(--bullet-size);
-                background-color: var(--c-article-bg);
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%)
-                    translateX(calc(-1 * var(--padding-left) / 2 - 50%));
-                z-index: 1;
-                border-radius: 100%;
-                border: 1px solid var(--c-bg);
-            }
-        
-            .summaryList li.active {
-                color: var(--c-body);
-            }
-        
-            .summaryList li.active h1::before,
-            .summaryList li.active h2::before {
-                background-color: var(--c-primary);
-            }
-        `;
+        }
 
         onScroll() {
-            const sticky = $(this.shadowRoot, ".sticky");
-
-            // sticky.style.width = "";
-            // sticky.classList.remove("sticky-active");
-
-            // if (window.scrollY >= sticky.offsetTop) {
-            //     sticky.style.width = `calc(${this.ref.width} - 2rem)`;
-            //     sticky.classList.add("sticky-active");
-            // }
+            this.stickyPolyfill();
         }
 
         mount() {
-            // this.ref.width = $(this.shadowRoot, ".sticky").offsetWidth + "px";
-            // window.addEventListener("scroll", this.onScroll.bind(this));
+            this.ref.width = $(this.shadowRoot, ".sticky").offsetWidth + "px";
+            window.addEventListener("scroll", this.onScroll.bind(this));
         }
 
         unmount() {
-            // window.removeEventListener("scroll", this.onScroll.bind(this));
+            window.removeEventListener("scroll", this.onScroll.bind(this));
         }
 
         render() {
@@ -127,17 +142,30 @@ Zero.define(
 
             return h.div(
                 {
-                    class: "sticky",
+                    class:
+                        "sticky" +
+                        (this.store.state.sticky ? " sticky-active" : ""),
                     style: styles.postSummary,
                 },
                 h.h1(
                     { style: styles.postSummaryHeading },
                     "Table of Contents",
                     h.ul(
-                        { class: "summaryList" },
+                        {
+                            class: "summaryList",
+                        },
                         headings.map(({ type, content }, i) =>
                             h.li(
-                                { class: i === 0 ? "active" : "" },
+                                {
+                                    class:
+                                        i === this.store.state.active
+                                            ? "active"
+                                            : "",
+                                    onClick: () => {
+                                        location.hash = content;
+                                        this.store.state.active = i;
+                                    },
+                                },
                                 h[type]({}, content)
                             )
                         )

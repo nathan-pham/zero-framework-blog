@@ -3,6 +3,11 @@ import globalStore, { types } from "/globalStore.js";
 
 export default class ZRouter extends Zero {
     store = globalStore;
+    ref = {
+        prevHash: location.hash,
+    };
+
+    __forceRebuild = true;
 
     static pathToRegex(path) {
         return new RegExp(
@@ -66,7 +71,13 @@ export default class ZRouter extends Zero {
             }));
 
         ZRouter.navigateTo();
-        window.addEventListener("popstate", () => ZRouter.navigateTo());
+        window.addEventListener("popstate", () => {
+            if (this.ref.prevHash !== location.hash) {
+                this.ref.prevHash = location.hash;
+                return false;
+            }
+            ZRouter.navigateTo();
+        });
     }
 
     render() {

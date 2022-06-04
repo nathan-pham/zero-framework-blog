@@ -19,13 +19,6 @@ const styles = {
         gap: "1.5rem",
         marginTop: "1.5rem",
     },
-
-    invisible: {
-        pointerEvents: "none",
-        visibility: "hidden",
-        opacity: 0,
-        display: "block",
-    },
 };
 
 Zero.define(
