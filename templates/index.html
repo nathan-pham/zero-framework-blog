@@ -4,8 +4,17 @@
         {{ return import("templates/seo.html") }}
 
         <script>
-            window.APP_POSTS = {{ JSON.stringify(posts) }}
-            window.APP_AUTHOR = {{ JSON.stringify(author) }}
+            window.APP_POSTS = JSON.parse(
+                decodeURIComponent(
+                    `{{ encodeURIComponent(JSON.stringify(posts)) }}`
+                )
+            );
+
+            window.APP_AUTHOR = JSON.parse(
+                decodeURIComponent(
+                    `{{ encodeURIComponent(JSON.stringify(author)) }}`
+                )
+            );
         </script>
     </head>
     <body>

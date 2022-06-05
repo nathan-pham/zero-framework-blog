@@ -1,4 +1,4 @@
-import Zero, { ZeroUtils } from "/lib/Zero.js";
+import Zero, { ZeroUtils, ZeroStore } from "/lib/Zero.js";
 import globalStyles from "/globalStyles.js";
 import globalStore from "/globalStore.js";
 
@@ -49,10 +49,11 @@ const styles = {
 Zero.define(
     "z-dynamic-post",
     class ZDynamicPost extends Zero {
-        store = globalStore;
-
-        ref = {
-            headings: [],
+        store = {
+            globalStore,
+            localStore: new ZeroStore({
+                activeHeading: 0,
+            }),
         };
 
         style = `
@@ -109,9 +110,15 @@ Zero.define(
             }
         `;
 
+        get headings() {
+            return ZeroUtils.$$(this.shadowRoot, ".markdownHtml > *").filter(
+                (node) => ["h1", "h2"].includes(node.tagName.toLowerCase())
+            );
+        }
+
         jumpPolyfill() {
-            for (const heading of this.ref.headings) {
-                if (location.hash === `#${encodeURI(heading.id)}`) {
+            for (const heading of this.headings) {
+                if (location.hash === `#${encodeURI(heading.textContent)}`) {
                     heading.scrollIntoView({
                         behavior: "smooth",
                     });
@@ -119,9 +126,25 @@ Zero.define(
             }
         }
 
+        onScroll() {
+            const headings = this.headings;
+            for (let i = 0; i < headings.length; i++) {
+                const heading = headings[i];
+
+                if (
+                    Math.abs(heading.getBoundingClientRect().top) <
+                    heading.offsetHeight
+                ) {
+                    this.store.localStore.state.activeHeading = i;
+                    return;
+                }
+            }
+        }
+
         mount() {
             // man js be making me recreate everything cause it won't auto jump to shadow dom ids
             window.addEventListener("hashchange", this.jumpPolyfill.bind(this));
+            window.addEventListener("scroll", this.onScroll.bind(this));
 
             // delay and wait for first render I guess
             setTimeout(() => {
@@ -134,6 +157,8 @@ Zero.define(
                 "hashchange",
                 this.jumpPolyfill.bind(this)
             );
+
+            window.removeEventListener("scroll", this.onScroll.bind(this));
         }
 
         render() {
@@ -156,13 +181,10 @@ Zero.define(
                 __innerHTML: content,
             });
 
-            // give all titles ids for jumping
-            this.ref.headings = [...markdownHtml.childNodes].filter((node) =>
-                ["h1", "h2"].includes(node.tagName.toLowerCase())
-            );
-
-            this.ref.headings.forEach((node) => {
-                node.id = node.textContent;
+            // force all internal links to open in new tab
+            ZeroUtils.$$(markdownHtml, "a").forEach((node) => {
+                node.setAttribute("target", "_blank");
+                node.setAttribute("rel", "noreferrer");
             });
 
             return h.main(
@@ -210,9 +232,16 @@ Zero.define(
                         }),
                         h.zDynamicSummary({
                             headings: JSON.stringify(
-                                tokens.filter(({ type }) =>
-                                    ["h1", "h2"].includes(type)
-                                )
+                                tokens
+                                    .filter(({ type }) =>
+                                        ["h1", "h2"].includes(type)
+                                    )
+                                    .map((token, i) => ({
+                                        ...token,
+                                        active:
+                                            this.store.localStore.state
+                                                .activeHeading === i,
+                                    }))
                             ),
                         })
                     )

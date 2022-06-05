@@ -19,7 +19,6 @@ Zero.define(
     "z-dynamic-summary",
     class ZDynamicSummary extends Zero {
         store = new ZeroStore({
-            active: 0,
             sticky: false,
         });
 
@@ -55,9 +54,9 @@ Zero.define(
                     display: block;
                     position: absolute;
                     z-index: 0;
-                    height: calc(100% - (var(--bullet-size) * 3));
+                    height: 100%;
                     width: 2px;
-                    top: var(--bullet-size);
+                    top: 0;
                     transform: translateX(calc(-1 * var(--padding-left) / 2 - 50%));
                     background-color: var(--c-article-bg);
                 }
@@ -154,16 +153,12 @@ Zero.define(
                         {
                             class: "summaryList",
                         },
-                        headings.map(({ type, content }, i) =>
+                        headings.map(({ type, content, active }, i) =>
                             h.li(
                                 {
-                                    class:
-                                        i === this.store.state.active
-                                            ? "active"
-                                            : "",
+                                    class: active ? "active" : "",
                                     onClick: () => {
                                         location.hash = content;
-                                        this.store.state.active = i;
                                     },
                                 },
                                 h[type]({}, content)

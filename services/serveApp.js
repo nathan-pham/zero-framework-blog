@@ -3,8 +3,8 @@ import ZeroMarkdown from "../lib/ZeroMarkdown";
 import config from "../config";
 
 const postsDirectory = "posts";
-const postFiles = ZeroServerUtils.getAllFiles(postsDirectory).map(
-    (filename) => {
+const postFiles = ZeroServerUtils.getAllFiles(postsDirectory)
+    .map((filename) => {
         const zeroMarkdown = new ZeroMarkdown(
             ZeroServerUtils.readFile(filename)
         );
@@ -14,8 +14,12 @@ const postFiles = ZeroServerUtils.getAllFiles(postsDirectory).map(
             markdown: zeroMarkdown,
             content: zeroMarkdown.render(),
         };
-    }
-);
+    })
+    .sort(
+        (postA, postB) =>
+            new Date(postB.markdown.metadata.date) -
+            new Date(postA.markdown.metadata.date)
+    );
 
 export default (utils) => {
     if (utils.req.method === "GET") {
