@@ -18,7 +18,6 @@ Zero.define(
                             !(href.startsWith("#") || href.startsWith("http"))
                         ) {
                             e.preventDefault();
-                            e.stopPropagation();
 
                             ZRouter.navigateTo(href);
 

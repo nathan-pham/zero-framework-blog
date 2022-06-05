@@ -65,13 +65,17 @@ Zero.define(
             `;
         }
 
+        emptyResults() {
+            this.store.setState(() => ({
+                open: false,
+                results: [],
+            }));
+        }
+
         mount() {
             document.body.addEventListener("click", (e) => {
                 if (e.target.tagName.toLowerCase() !== "z-header") {
-                    this.store.setState(() => ({
-                        open: false,
-                        results: [],
-                    }));
+                    this.emptyResults();
                 }
             });
         }
@@ -121,12 +125,19 @@ Zero.define(
                         : null
                 ),
                 h.div(
-                    { class: "searchResults" },
+                    {
+                        onClick: () => {
+                            this.emptyResults();
+                        },
+                        class: "searchResults",
+                    },
                     this.store.state.results.map((result) =>
                         h.a(
                             {},
                             h.zLink(
-                                { href: `/${result.url}` },
+                                {
+                                    href: `/${result.url}`,
+                                },
                                 result.markdown.metadata.title
                             )
                         )
