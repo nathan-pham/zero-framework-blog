@@ -11,6 +11,7 @@ const styles = {
         backgroundColor: "var(--c-bg)",
         paddingTop: "1rem",
         paddingBottom: "1rem",
+        position: "relative",
     },
     headerLink: {
         fontSize: "1.75rem",
@@ -35,10 +36,7 @@ Zero.define(
                             h.h1({ style: styles.headerLink }, "📦 Zero Blog")
                         )
                     ),
-                    h.zRadixIcon({
-                        type: "magnifyingGlass",
-                        size: "calc(var(--svg-width) * 1.25)",
-                    })
+                    h.zSearch()
                 )
             );
         }

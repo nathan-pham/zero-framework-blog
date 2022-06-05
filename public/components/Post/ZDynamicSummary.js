@@ -22,19 +22,13 @@ Zero.define(
             sticky: false,
         });
 
-        ref = {
-            width: 0,
-        };
-
         style() {
             return `
                 .sticky-active {
                     position: fixed;
                     top: 0;
                     width: ${
-                        this.store.state.sticky
-                            ? `calc(${this.ref.width} - 2rem)`
-                            : ""
+                        this.store.state.sticky ? `calc(17.5rem - 2rem)` : ""
                     };
                 }
 
@@ -128,7 +122,6 @@ Zero.define(
         }
 
         mount() {
-            this.ref.width = $(this.shadowRoot, ".sticky").offsetWidth + "px";
             window.addEventListener("scroll", this.onScroll.bind(this));
         }
 

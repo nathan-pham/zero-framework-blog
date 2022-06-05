@@ -47,7 +47,7 @@ export default class ZRouter extends Zero {
     }
 
     static navigateTo(url) {
-        if (url) {
+        if (url && url !== location.pathname) {
             history.pushState(null, null, url);
         }
 

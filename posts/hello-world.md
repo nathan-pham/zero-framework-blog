@@ -36,6 +36,8 @@ Here are some important milestones in this project:
 4. Day 5 - 6: created primary styles for the home and post page
 5. Day 7 - 8: created Zero Framework
 6. Day 9 - 10: rewrote old frontend with Zero
+7. Day 11: Bug fixes on Markdown Renderer & Zero Framework
+8. Day 12: More styles on post pages (especially table of contents)
 
 Note: Zero is really unstable so I probably shot myself in the foot by remaking the entire app with it, but at least it's a framework I made so it's still "Vanilla JS".
 
@@ -54,5 +56,4 @@ Here's a code block:
 ```js
 let x = 10;
 x += 10;
-sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf;
 ```

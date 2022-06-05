@@ -15,3 +15,5 @@ import "/components/ZProfileSocials.js";
 import "/components/Post/ZDynamicPost.js";
 import "/components/Post/ZDynamicSummary.js";
 import "/components/Post/ZDynamicMetadata.js";
+
+import "/components/ZSearch.js";
