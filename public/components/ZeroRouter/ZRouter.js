@@ -7,8 +7,6 @@ export default class ZRouter extends Zero {
         prevHash: location.hash,
     };
 
-    __forceRebuild = true;
-
     static pathToRegex(path) {
         return new RegExp(
             "^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$"

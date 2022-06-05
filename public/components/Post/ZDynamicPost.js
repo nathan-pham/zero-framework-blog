@@ -79,7 +79,7 @@ Zero.define(
                 max-width: 100%;
                 border-radius: 0.75rem;
             }
-            
+
             .markdownHtml code[data-type="inline"] {
                 border-radius: 0.25rem;
                 background-color: var(--c-article-bg);
@@ -102,11 +102,26 @@ Zero.define(
                 padding: 1rem;
                 background-color: var(--c-replit-editor);
                 color: #fff;
+                max-width: 100%;
+                overflow-x: auto;
+                white-space: pre-wrap;
+                word-break: break-all;
             }
 
             .markdownHtml blockquote {
                 border-left: 0.25rem solid var(--c-article-bg);
                 padding-left: 1rem;
+            }
+
+            @media (max-width: 70rem) {
+                .postMetadata {
+                    display: none;
+                }
+
+                .markdownContent {
+                    box-shadow: none !important;
+                    padding: 1rem !important;
+                }
             }
         `;
 
@@ -202,6 +217,7 @@ Zero.define(
                                 ...styles.markdownContent,
                                 ...globalStyles.postContainer,
                             },
+                            class: "markdownContent",
                         },
                         metadata.tags.length > 0
                             ? metadata.tags
@@ -223,7 +239,7 @@ Zero.define(
                         )
                     ),
                     h.div(
-                        { style: styles.postMetadata },
+                        { style: styles.postMetadata, class: "postMetadata" },
                         h.zDynamicMetadata({
                             name: APP_AUTHOR.name,
                             date: metadata.date,

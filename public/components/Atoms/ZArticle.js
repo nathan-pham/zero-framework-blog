@@ -20,10 +20,11 @@ const styles = {
     },
     articleContent: {
         padding: "1rem",
-        height: "5rem",
+        minHeight: "5rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        gap: "1rem",
     },
     articleContentHeading: {
         margin: 0,

@@ -37,6 +37,8 @@ Here are some important milestones in this project:
 5. Day 7 - 8: created Zero Framework
 6. Day 9 - 10: rewrote old frontend with Zero
 
+Note: Zero is really unstable so I probably shot myself in the foot by remaking the entire app with it, but at least it's a framework I made so it's still "Vanilla JS".
+
 # Example Markdown Supported
 
 Just testing out some styles for the `Markdown` renderer. Here's my Twitter banner:
@@ -52,4 +54,5 @@ Here's a code block:
 ```js
 let x = 10;
 x += 10;
+sdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf;
 ```

@@ -33,6 +33,15 @@ const styles = {
 Zero.define(
     "z-profile",
     class ZProfile extends Zero {
+        style = `
+            @media (max-width: 55rem) {
+                .profile {
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                }
+            }
+        `;
+
         render() {
             const { avatar, name, bio } = this.props;
 
@@ -40,7 +49,7 @@ Zero.define(
                 { style: globalStyles.bgWrapper },
 
                 h.div(
-                    { style: styles.profile },
+                    { style: styles.profile, class: "profile" },
                     h.img({
                         src: avatar,
                         alt: `${name}'s profile picture`,

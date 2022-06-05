@@ -24,11 +24,28 @@ const styles = {
 Zero.define(
     "z-articles",
     class ZArticles extends Zero {
+        style = `
+            @media (max-width: 70rem) {
+                .articleGrid {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                }
+            }
+
+            @media (max-width: 55rem) {
+                .articleGrid {
+                    grid-template-columns: 1fr !important;
+                }
+            }
+        `;
+
         render() {
             return h.div(
                 { style: styles.articleWrapper },
                 h.h2({ style: styles.articleHeading }, "Articles"),
-                h.div({ style: styles.articleGrid }, h.slot())
+                h.div(
+                    { style: styles.articleGrid, class: "articleGrid" },
+                    h.slot()
+                )
             );
         }
     }
