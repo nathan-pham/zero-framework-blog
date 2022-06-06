@@ -12,10 +12,8 @@ new ZeroServer({
 
 /*
 TODO:
-z-code syntax highlighter
 z-comment section
 
 template intro (only for Zero)
-- create template (archive -> completely vanilla)
 - create template (main -> with Zero framework)
 */

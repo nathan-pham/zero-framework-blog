@@ -28,18 +28,21 @@ I'd also like to thank
 
 ## Project Timeline
 
-Here are some important milestones in this project:
-
 1. Day 1: new Replit project to serve static resources
 2. Day 2 - 3: created a [Markdown renderer](https://github.com/nathan-pham/markdown-renderer) from scratch
 3. Day 4: created a [Templating Engine](https://github.com/nathan-pham/templating-engine) from scratch
 4. Day 5 - 6: created primary styles for the home and post page
-5. Day 7 - 8: created Zero Framework
+5. Day 7 - 8: created Zero Framework (built on stateful-components and implemented a more robust diffing algorithm)
 6. Day 9 - 10: rewrote old frontend with Zero
 7. Day 11: Bug fixes on Markdown Renderer & Zero Framework
 8. Day 12: More styles on post pages (especially table of contents)
+9. Day 13: Got sick but made [syntax highlighting](https://github.com/nathan-pham/zero-code) with regex and a search component with throttling (hopefull compensates for the poor performance)
 
-Note: Zero is really unstable so I probably shot myself in the foot by remaking the entire app with it, but at least it's a framework I made so it's still "Vanilla JS".
+What about "x" feature!?! It's not working!!! <s>Honestly make that yourself.</s> No, seriously. I know a lot of features are implemented with a custom framework, but I initially started out with pure Vanilla JS. The old code base can be found under the `archive` directory, assuming you do not go through the template onboarding process. Because I switched code styles midway, certain features like search, SPA, syntax highlighting (basically everything after Day 6) are not implemented, and other modules like the Markdown Renderer are out of date. Never fear, everything is open source (and you may choose something more maintained because Vanilla JS for the sake of Vanilla JS is not a feature). Also, even if you don't fully use my custom framework `Zero`, you can still use the more modularized web components.
+
+Note: Zero is really unstable so I probably shot myself in the foot by remaking the entire app with it, but at least it's a framework I made so it's still "Vanilla JS". All in all, ideally you would use a stable framework like React. Frameworks exist for a reason. Vanilla JS is just... hard to maintain to say the least.
+
+Note 2: I am currently updating the documentation for Zero, hang tight if you want to build mini apps with it.
 
 # Example Markdown Supported
 
