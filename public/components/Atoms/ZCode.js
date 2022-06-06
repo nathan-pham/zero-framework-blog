@@ -21,6 +21,9 @@ const cssRegex = {
 const JsRegex = {
     classes: / (class) /g,
 
+    string1: /"(.*?)"/g,
+    string2: /'(.*?)'/g,
+
     jsKeywords:
         /\b(new|var|let|const|extends|if|do|function|return|export|from|import|default|constructor|while|switch|for|foreach|in|continue|break|typeof|instanceof)(?=[^\w])/g,
     jsClasses:
@@ -147,7 +150,7 @@ Zero.define(
                 javascript: JsRegex,
             };
 
-            const type = this.dataset?.type.toString().toLowerCase();
+            const type = this.dataset.type?.toString().toLowerCase();
             if (regexMap.hasOwnProperty(type)) {
                 return regexMap[type];
             }
