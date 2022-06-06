@@ -1,4 +1,5 @@
 import Zero, { ZeroUtils, ZeroStore } from "/lib/Zero.js";
+import ZRouter from "/components/ZeroRouter/ZRouter.js";
 import globalStyles from "/globalStyles.js";
 import globalStore from "/globalStore.js";
 
@@ -186,14 +187,11 @@ Zero.define(
                 return null;
             }
 
-            const {
-                content,
-                markdown: { metadata, tokens },
-            } = post;
+            ZRouter.setTitle(post.markdown.metadata.title);
 
             const markdownHtml = h.div({
                 class: "markdownHtml",
-                __innerHTML: content,
+                __innerHTML: post.content,
             });
 
             // force all internal links to open in new tab
@@ -206,8 +204,14 @@ Zero.define(
                 { style: styles.postWrapper },
                 h.div(
                     { style: styles.postEmoji },
-                    h.h1({ style: styles.postEmojiImage }, metadata.emoji),
-                    h.h2({ style: styles.postEmojiTitle }, metadata.title)
+                    h.h1(
+                        { style: styles.postEmojiImage },
+                        post.markdown.metadata.emoji
+                    ),
+                    h.h2(
+                        { style: styles.postEmojiTitle },
+                        post.markdown.metadata.title
+                    )
                 ),
                 h.div(
                     { style: styles.markdownContentWrapper },
@@ -219,8 +223,8 @@ Zero.define(
                             },
                             class: "markdownContent",
                         },
-                        metadata.tags.length > 0
-                            ? metadata.tags
+                        post.markdown.metadata.tags.length > 0
+                            ? post.markdown.metadata.tags
                                   .split(",")
                                   .map((tag) =>
                                       h.span({ class: "markdownTag" }, tag)
@@ -242,13 +246,14 @@ Zero.define(
                         { style: styles.postMetadata, class: "postMetadata" },
                         h.zDynamicMetadata({
                             name: APP_AUTHOR.name,
-                            date: metadata.date,
+                            date: post.markdown.metadata.date,
                             words:
-                                Math.ceil(content.split(" ").length / 10) * 10,
+                                Math.ceil(post.content.split(" ").length / 10) *
+                                10,
                         }),
                         h.zDynamicSummary({
                             headings: JSON.stringify(
-                                tokens
+                                post.markdown.tokens
                                     .filter(({ type }) =>
                                         ["h1", "h2"].includes(type)
                                     )

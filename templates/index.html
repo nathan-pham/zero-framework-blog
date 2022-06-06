@@ -3,6 +3,7 @@
     <head>
         {{ return import("templates/seo.html") }}
 
+        <!-- save posts & author into JS globals -->
         <script>
             window.APP_POSTS = JSON.parse(
                 decodeURIComponent(
@@ -20,7 +21,7 @@
     <body>
         <div id="app">
             <z-router>
-                <z-route path="/">
+                <z-route path="/" title="Home">
                     <z-header></z-header>
                     <z-profile
                         avatar="{{ author.avatar }}"
@@ -55,16 +56,3 @@
         </div>
     </body>
 </html>
-
-<!--
-    <z-article-heading></z-article-heading>
-    <z-article-main>
-        <slot name="profile">
-            <z-profile></z-profile>
-        </slot>
-        <slot name="metadata">
-            <z-article-metadata></z-article-metadata>
-            <z-article-table></z-article-table>
-        </slot>
-    </z-article-main>
--->

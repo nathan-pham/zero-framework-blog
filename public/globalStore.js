@@ -1,5 +1,6 @@
 import { ZeroStore } from "/lib/Zero.js";
 
+// global store, mainly for ZeroRouter
 const globalStore = new ZeroStore(
     {
         routes: [],
@@ -21,6 +22,8 @@ const globalStore = new ZeroStore(
     }
 );
 
+// redux-like pattern
+// generally I didn't use this pattern because state wasn't really shared that much
 const types = {
     routerNavigateTo: "router/navigateTo",
 };

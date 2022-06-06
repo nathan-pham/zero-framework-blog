@@ -26,6 +26,10 @@ export default class ZRouter extends Zero {
         );
     }
 
+    static setTitle(title = "Home") {
+        document.title = `Zero Framework Blog | ${title}`;
+    }
+
     static getMatch(routes) {
         let match = routes
             .map((route) => ({
@@ -35,6 +39,10 @@ export default class ZRouter extends Zero {
                 ),
             }))
             .filter((route) => route.result)[0];
+
+        if (match.route.title) {
+            ZRouter.setTitle(match.route.title);
+        }
 
         if (!match) {
             match = {
@@ -66,6 +74,7 @@ export default class ZRouter extends Zero {
             .filter((child) => child.tagName === "Z-ROUTE")
             .map((route) => ({
                 path: route.getAttribute("path"),
+                title: route.getAttribute("title"),
             }));
 
         ZRouter.navigateTo();

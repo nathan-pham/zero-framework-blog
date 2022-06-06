@@ -72,6 +72,7 @@ Zero.define(
             `;
         }
 
+        // close search & empty results
         emptyResults() {
             this.store.setState(() => ({
                 open: false,
@@ -80,6 +81,7 @@ Zero.define(
         }
 
         mount() {
+            // empty results if user clicks outside of the header
             document.body.addEventListener("click", (e) => {
                 if (e.target.tagName.toLowerCase() !== "z-header") {
                     this.emptyResults();
@@ -120,19 +122,16 @@ Zero.define(
                                           return;
                                       }
 
+                                      // filter through posts, pick top 4
+                                      // I am unsure how performant this actually is
                                       const results = APP_POSTS.filter(
-                                          ({
-                                              markdown: {
-                                                  metadata: {
-                                                      title = "",
-                                                      tags = "",
-                                                  },
-                                              },
-                                          }) =>
-                                              title
+                                          (post) =>
+                                              post.markdown.metadata.title
                                                   .toLowerCase()
                                                   .includes(input) ||
-                                              tags.toLowerCase().includes(input)
+                                              post.markdown.metadata.tags
+                                                  .toLowerCase()
+                                                  .includes(input)
                                       ).slice(0, 4);
 
                                       this.store.setState(() => ({

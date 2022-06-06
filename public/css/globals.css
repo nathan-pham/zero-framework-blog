@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
+/* CSS vars (change if you want to change look of app) */
 :root {
     --c-body: #2e2e2e;
     --c-head: #111111;
@@ -14,6 +15,7 @@
     --c-primary: #ffce64;
     --c-primary-hover: #fec448;
 
+    /* yoinked colors from my current VSCode theme, Github Dark I think??? */
     --c-editor-bg: #0e1117;
     --c-editor-comment: #8d949e;
     --c-editor-string: #b1d6ff;
@@ -24,7 +26,7 @@
     --c-editor-css-var: #f1a657;
     --c-editor-css-bracket: #f6d700;
     --c-editor-css-paren: #ce70d8;
-    
+
     --font-inter: "Inter", sans-serif;
 
     --svg-width: 1.4rem;
@@ -51,7 +53,7 @@ body {
     box-sizing: inherit;
 }
 
-/* global resets */
+/* global resets, had to include this because z-link renders a span and not an anchor */
 a {
     cursor: pointer;
 }
