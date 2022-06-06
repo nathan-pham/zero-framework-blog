@@ -14,6 +14,10 @@ Padding and margin actually influence the size of elements unless you explicitly
 I think MDN has a [fantastic demonstration](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) if you have difficulty understanding this concept.
 
 ```css
+:root {
+    --c-bg: #fff;
+}
+
 html,
 body {
     height: 100%;
@@ -21,6 +25,7 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color: var(--c-bg);
 }
 
 *,

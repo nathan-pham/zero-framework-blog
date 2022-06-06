@@ -70,7 +70,9 @@ Zero.define(
                                 { style: styles.articleContentDate },
                                 daysAgo === 0
                                     ? "Hot off the press"
-                                    : `${daysAgo} days ago`
+                                    : `${daysAgo} day${
+                                          daysAgo === 1 ? "" : "s"
+                                      } ago`
                             )
                         )
                     )

@@ -1,5 +1,4 @@
 import Zero, { ZeroUtils, ZeroStore } from "/lib/Zero.js";
-import globalStyles from "/globalStyles.js";
 
 const h = ZeroUtils.jsh;
 const styles = {
@@ -25,6 +24,10 @@ Zero.define(
             open: false,
             results: [],
         });
+
+        ref = {
+            timeout: null,
+        };
 
         style() {
             return `
@@ -62,6 +65,10 @@ Zero.define(
                 .searchResults a:last-child {
                     margin-bottom: 0.25rem;
                 }
+
+                .input::placeholder {
+                    color: var(--c-gray);
+                }
             `;
         }
 
@@ -97,43 +104,56 @@ Zero.define(
                     this.store.state.open
                         ? h.input({
                               style: styles.input,
+                              class: "input",
+                              placeholder: "Search by title or tags",
                               onInput: (e) => {
                                   const input = e.target.value.trim();
-                                  const results = APP_POSTS.filter(
-                                      ({
-                                          markdown: {
-                                              metadata: {
-                                                  title = "",
-                                                  tags = "",
-                                              },
-                                          },
-                                      }) =>
-                                          input &&
-                                          (title
-                                              .toLowerCase()
-                                              .includes(input) ||
-                                              tags
-                                                  .toLowerCase()
-                                                  .includes(input))
-                                  ).slice(0, 4);
 
-                                  this.store.setState(() => ({
-                                      results,
-                                  }));
+                                  // throttle search cause it is very very slow
+                                  clearTimeout(this.ref.timeout);
+                                  this.ref.timeout = setTimeout(() => {
+                                      if (!input) {
+                                          this.store.setState(() => ({
+                                              results: [],
+                                          }));
+
+                                          return;
+                                      }
+
+                                      const results = APP_POSTS.filter(
+                                          ({
+                                              markdown: {
+                                                  metadata: {
+                                                      title = "",
+                                                      tags = "",
+                                                  },
+                                              },
+                                          }) =>
+                                              title
+                                                  .toLowerCase()
+                                                  .includes(input) ||
+                                              tags.toLowerCase().includes(input)
+                                      ).slice(0, 4);
+
+                                      this.store.setState(() => ({
+                                          results,
+                                      }));
+                                  }, 500);
                               },
                           })
                         : null
                 ),
                 h.div(
                     {
-                        onClick: () => {
-                            this.emptyResults();
-                        },
                         class: "searchResults",
                     },
                     this.store.state.results.map((result) =>
                         h.a(
-                            {},
+                            {
+                                onClick: () => {
+                                    this.emptyResults();
+                                },
+                            },
                             h.zLink(
                                 {
                                     href: `/${result.url}`,
@@ -147,7 +167,3 @@ Zero.define(
         }
     }
 );
-
-// .map(
-//     (post) => post.markdown.metadata.title
-// )

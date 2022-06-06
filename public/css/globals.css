@@ -14,8 +14,17 @@
     --c-primary: #ffce64;
     --c-primary-hover: #fec448;
 
-    --c-replit-editor: #1e2333;
-
+    --c-editor-bg: #0e1117;
+    --c-editor-comment: #8d949e;
+    --c-editor-string: #b1d6ff;
+    --c-editor-keyword: #ee7b74;
+    --c-editor-classes: #8cc0f1;
+    --c-editor-methods: #cea8ff;
+    --c-editor-html: #95e783;
+    --c-editor-css-var: #f1a657;
+    --c-editor-css-bracket: #f6d700;
+    --c-editor-css-paren: #ce70d8;
+    
     --font-inter: "Inter", sans-serif;
 
     --svg-width: 1.4rem;

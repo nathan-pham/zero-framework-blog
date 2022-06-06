@@ -8,6 +8,7 @@ import "/components/Atoms/ZHeader.js";
 import "/components/Atoms/ZFooter.js";
 import "/components/Atoms/ZArticles.js";
 import "/components/Atoms/ZArticle.js";
+import "/components/Atoms/ZCode.js";
 
 import "/components/ZProfile.js";
 import "/components/ZProfileSocials.js";
