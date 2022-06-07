@@ -1,0 +1,41 @@
+### create new comment page
+
+POST https://comment-api.phamn23.repl.co/createPage
+Content-Type: application/json
+
+{
+    "page": "localhost:5000/post/1"
+}
+
+### delete comment page
+DELETE https://comment-api.phamn23.repl.co/deletePage
+Content-Type: application/json
+
+{
+    "page": "localhost:5000/post/1"
+}
+
+### get comments under a page
+GET https://comment-api.phamn23.repl.co/getPage?page=localhost:5000/post/1
+
+### create a comment
+PUT https://comment-api.phamn23.repl.co/createComment
+Content-Type: application/json
+
+{
+    "page": "localhost:5000/post/1",
+    "comment": "hello world"
+}
+
+### delete a comment
+DELETE https://comment-api.phamn23.repl.co/deleteComment
+Content-Type: application/application/json
+
+{
+    "page": "localhost:5000/post/1",
+    "id": 1234
+}
+
+### get credentials
+
+GET https://comment-api.phamn23.repl.co/getCredentials

@@ -104,6 +104,7 @@ Zero.define(
             `;
         }
 
+        // make table of contents "sticky", it will scroll and then stay fixed when it is just about to leave the view
         stickyPolyfill() {
             const sticky = $(this.shadowRoot, ".sticky");
             const body = this.shadowRoot.host.parentNode;
