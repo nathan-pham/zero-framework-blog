@@ -240,7 +240,10 @@ Zero.define(
                             h.zProfileSocials({
                                 ...APP_AUTHOR.links,
                             })
-                        )
+                        ),
+                        h.zComment({
+                            api: "https://comment-api.phamn23.repl.co"
+                        })
                     ),
                     h.div(
                         { style: styles.postMetadata, class: "postMetadata" },

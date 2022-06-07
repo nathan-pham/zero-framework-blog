@@ -24,3 +24,6 @@ import "/components/Post/ZDynamicMetadata.js";
 
 // handle searching for posts
 import "/components/ZSearch.js";
+
+// COMMENTS
+import "/components/ZComment.js";
