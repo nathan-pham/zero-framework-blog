@@ -5,6 +5,15 @@ import config from "./config";
 import servePublic from "./services/servePublic";
 import serveApp from "./services/serveApp";
 
+import serveLogin from "./services/serveLogin";
+
+import createPage from "./services/page/createPage";
+import deletePage from "./services/page/deletePage";
+import getPage from "./services/page/getPage";
+
+import createComment from "./services/comment/createComment";
+import deleteComment from "./services/comment/deleteComment";
+
 /*
 create a new server
 relies on a simple principle: you have a bunch of "services"
@@ -15,7 +24,19 @@ unfortunately, my implementation of ZeroServer & the Zero frontend does not yet 
 */
 new ZeroServer({
     port: config.port,
-    services: [servePublic, serveApp],
+    services: [
+        servePublic,
+        serveLogin,
+
+        createPage,
+        // deletePage, // disabled cause I don't want users deleting - could have added a thing to check for my username but whatever
+        getPage,
+
+        createComment,
+        deleteComment,
+
+        serveApp,
+    ],
 });
 
 /*

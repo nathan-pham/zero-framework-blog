@@ -19,5 +19,8 @@
     "bugs": {
         "url": "https://github.com/nathan-pham/zero-framework-blog/issues"
     },
-    "homepage": "https://github.com/nathan-pham/zero-framework-blog#readme"
+    "homepage": "https://github.com/nathan-pham/zero-framework-blog#readme",
+    "dependencies": {
+        "@replit/database": "^2.0.2"
+    }
 }
