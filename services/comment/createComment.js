@@ -1,8 +1,5 @@
 import db from "../../database"
-
-const uid = () => (
-    Date.now().toString(36) + Math.random().toString(36).substr(2)
-)
+import { formatPage, uid } from "../serviceUtils.js"
 
 
 export default async (utils) => {
@@ -21,7 +18,8 @@ export default async (utils) => {
         }
         
         if(body && body.comment && body.page) {
-            const comments = await db.get(body.page)
+            const page = formatPage(body.page)
+            const comments = await db.get(page)
 
             // check if page already exists
             if(comments) {
@@ -29,13 +27,13 @@ export default async (utils) => {
                     // probably should apply some basic sanitizing but I figure
                     // text content will deal with it
                     
-                    comment: body.comment, 
+                    comment: body.comment.trim(), 
                     date: new Date(),
                     username,
                     id: uid()
                 })
 
-                await db.set(body.page, comments)
+                await db.set(page, comments)
                 utils.json({
                     message: "left a comment",
                     success: true                    

@@ -1,4 +1,5 @@
 import db from "../../database"
+import { formatPage } from "../serviceUtils.js"
 
 export default async (utils) => {
     if(utils.req.method === "GET" && utils.url.pathname === "/getPage") {
@@ -6,7 +7,7 @@ export default async (utils) => {
         const page = params.get("page")
 
         if(params && page) {
-            const comments = await db.get(page)
+            const comments = await db.get(formatPage(page))
 
             // send comments
             if(comments) {

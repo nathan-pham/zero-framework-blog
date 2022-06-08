@@ -215,34 +215,36 @@ Zero.define(
                 ),
                 h.div(
                     { style: styles.markdownContentWrapper },
-                    h.div(
-                        {
-                            style: {
-                                ...styles.markdownContent,
-                                ...globalStyles.postContainer,
-                            },
-                            class: "markdownContent",
-                        },
-                        post.markdown.metadata.tags.length > 0
-                            ? post.markdown.metadata.tags
-                                  .split(",")
-                                  .map((tag) =>
-                                      h.span({ class: "markdownTag" }, tag)
-                                  )
-                            : [],
-                        markdownHtml,
-                        h.hr({ style: styles.postDivider }),
-                        h.zProfile(
+                    h.div({},
+                        h.div(
                             {
-                                ...APP_AUTHOR,
-                                variant: "post",
+                                style: {
+                                    ...styles.markdownContent,
+                                    ...globalStyles.postContainer,
+                                },
+                                class: "markdownContent",
                             },
-                            h.zProfileSocials({
-                                ...APP_AUTHOR.links,
-                            })
+                            post.markdown.metadata.tags.length > 0
+                                ? post.markdown.metadata.tags
+                                      .split(",")
+                                      .map((tag) =>
+                                          h.span({ class: "markdownTag" }, tag)
+                                      )
+                                : [],
+                            markdownHtml,
+                            h.hr({ style: styles.postDivider }),
+                            h.zProfile(
+                                {
+                                    ...APP_AUTHOR,
+                                    variant: "post",
+                                },
+                                h.zProfileSocials({
+                                    ...APP_AUTHOR.links,
+                                })
+                            ),
                         ),
                         h.zComment({
-                            api: "https://comment-api.phamn23.repl.co"
+                            api: location.origin
                         })
                     ),
                     h.div(

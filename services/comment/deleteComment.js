@@ -1,4 +1,5 @@
 import db from "../../database"
+import { formatPage } from "../serviceUtils.js"
 
 export default async (utils) => {
     if(utils.req.method === "DELETE" && utils.url.pathname === "/deleteComment") {
@@ -15,7 +16,8 @@ export default async (utils) => {
         }
 
         if(body && body.page && body.commentId) {
-            const comments = await db.get(body.page)
+            const page = formatPage(body.page)
+            const comments = await db.get(page)
             
             /*
             delete methods fail silently because
@@ -25,7 +27,7 @@ export default async (utils) => {
             comments = comments.filter(comment => (
                 !(comment.username === username && comment.id.toString() === body.commentId.toString())
             ))
-            await db.set(body.page, comments)
+            await db.set(page, comments)
             
             utils.json({
                 message: `deleted comment ${body.commentId}`,

@@ -8,7 +8,8 @@ const globalStore = new ZeroStore(
             path: "",
             params: {},
         },
-        authenticated: false
+        authenticated: false,
+        username: ""
     },
     (state, action) => {
         switch (action.type) {

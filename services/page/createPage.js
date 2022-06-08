@@ -1,11 +1,12 @@
 import db from "../../database"
+import { formatPage } from "../serviceUtils.js"
 
 export default async (utils) => {
     if(utils.req.method === "POST" && utils.url.pathname === "/createPage") {
         const body = JSON.parse(await utils.body)
 
         if(body && body.page) {
-            const page = body.page.toString().replace(/http(s?):\/\//g, "")
+            const page = formatPage(body.page)
             const exists = await db.get(page)
 
             // check if page already exists
@@ -21,7 +22,7 @@ export default async (utils) => {
             // otherwise create new empty page
             await db.set(page, [])
             utils.json({
-                message: `created ${page}`,
+                message: `created ${body.page}`,
                 success: true
             })
 
