@@ -37,8 +37,13 @@ I'd also like to thank
 7. Day 11: Bug fixes on Markdown Renderer & Zero Framework
 8. Day 12: More styles on post pages (especially table of contents)
 9. Day 13: Got sick but made [syntax highlighting](https://github.com/nathan-pham/zero-code) with regex and a search component with throttling (hopefull compensates for the poor performance)
+10. Day 14: idk
+11. Day 15: Added comments with Replit Auth and created onboarding page.
 
-What about "x" feature!?! It's not working!!! <s>Honestly make that yourself.</s> No, seriously. I know a lot of features are implemented with a custom framework, but I initially started out with pure Vanilla JS. The old code base can be found under the `archive` directory, assuming you do not go through the template onboarding process. Because I switched code styles midway, certain features like search, SPA, syntax highlighting (basically everything after Day 6) are not implemented, and other modules like the Markdown Renderer are out of date. Never fear, everything is open source (and you may choose something more maintained because Vanilla JS for the sake of Vanilla JS is not a feature). Also, even if you don't fully use my custom framework `Zero`, you can still use the more modularized web components.
+
+What about "x" feature!?! It's not working!!! <s>Honestly make that yourself.</s> No, seriously. 
+
+I know a lot of features are implemented with a custom framework, but I initially started out with pure Vanilla JS. In fact, you can find the old code base can be found under the `archive` directory. However, because I switched code styles midway, certain features like search, SPA, syntax highlighting (basically everything after Day 6) are not implemented. Oher modules like the Markdown Renderer are out of date. Never fear, everything - from the Markdown Renderer to the Templating Engine - is open source (and you may choose something more maintained because Vanilla JS for the sake of Vanilla JS is not a feature). Also, even if you don't fully use my custom framework `Zero`, you can still use certain parts of the current application because everything is a web component.
 
 Note: Zero is really unstable so I probably shot myself in the foot by remaking the entire app with it, but at least it's a framework I made so it's still "Vanilla JS". All in all, ideally you would use a stable framework like React. Frameworks exist for a reason. Vanilla JS is just... hard to maintain to say the least.
 
@@ -60,3 +65,20 @@ Here's a code block:
 let x = 10;
 x += 10;
 ```
+
+## Metadata IMPORTANT
+You can add metadata to the top of your posts through dashes. Here's what this post's metadata looks like (along with what it does).
+
+```
+---
+title: My First Zero Post
+emoji: 🚀
+date: 5/28/2022
+tags: tech, markdown
+---
+```
+
+- `title`: obviously changes the title
+- `emoji`: image representing each post
+- `date`: when it was written
+- `tags`: comma separated list of random stuff your post is about

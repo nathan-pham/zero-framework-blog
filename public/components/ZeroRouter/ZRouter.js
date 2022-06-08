@@ -40,15 +40,15 @@ export default class ZRouter extends Zero {
             }))
             .filter((route) => route.result)[0];
 
-        if (match.route.title) {
-            ZRouter.setTitle(match.route.title);
-        }
-
         if (!match) {
             match = {
                 route: routes[0],
                 result: [location.pathname],
             };
+        }
+
+        if (match.route.title) {
+            ZRouter.setTitle(match.route.title);
         }
 
         return match;

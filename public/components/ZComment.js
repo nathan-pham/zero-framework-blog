@@ -84,7 +84,7 @@ Zero.define(
                 box-sizing: border-box;
                 font-family: Inter, sans-serif;
                 outline: none;
-                border: 1px solid var(--c-secondary-bg);
+                border: 1px solid #eee;
                 font-size: 1rem;
             }
 
