@@ -39,7 +39,7 @@ I'd also like to thank
 9. Day 13: Got sick but made [syntax highlighting](https://github.com/nathan-pham/zero-code) with regex and a search component with throttling (hopefull compensates for the poor performance)
 10. Day 14: idk
 11. Day 15: Added comments with Replit Auth and created onboarding page.
-
+12. Day 16: Finished onboarding & Posted Repl
 
 What about "x" feature!?! It's not working!!! <s>Honestly make that yourself.</s> No, seriously. 
 
