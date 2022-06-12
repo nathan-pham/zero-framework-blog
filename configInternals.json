@@ -1,6 +1,6 @@
 {
     "port": 5500,
-    "genesis": true,
+    "genesis": false,
     "demo": true,
     "author": {
         "avatar": "https://pbs.twimg.com/profile_images/1520125126271922179/ds8zJhJV_400x400.jpg",

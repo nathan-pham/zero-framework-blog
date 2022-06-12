@@ -3,6 +3,8 @@
 # Zero Framework Blog
 A zero dependency blog, created from scratch. Created for the [Replit Template Jam](https://blog.replit.com/template-jam).
 
+NOTE: if you're here from a template, go to `configInternals.json` and set `demo` to false. Then run the Repl.
+
 ## Features
 - unique onboarding process
 
@@ -61,3 +63,4 @@ Settings are applied in the onboarding process, which basically controls `config
 }
 ```
 
+These settings are self explanatory, but I've also provided some comments.

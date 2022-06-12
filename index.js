@@ -12,6 +12,8 @@ import getPage from "./services/page/getPage";
 import createComment from "./services/comment/createComment";
 import deleteComment from "./services/comment/deleteComment";
 
+import serveLogin from "./services/serveLogin"
+
 import serveGenesis from "./services/serveGenesis";
 
 /*
@@ -28,6 +30,7 @@ new ZeroServer({
         servePublic,
         serveGenesis,
 
+        serveLogin,
         createPage,
         // deletePage, // disabled cause I don't want users deleting - could have added a thing to check for my username but whatever
         getPage,

@@ -1,3 +1,7 @@
+body {
+    padding: 0 2rem;
+}
+
 main {
     background-color: var(--c-bg);
     max-width: var(--max-w-sm);
