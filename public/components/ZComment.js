@@ -107,7 +107,7 @@ Zero.define(
                 background-color: var(--c-primary-hover);
             }
 
-            .comments {
+            .comments .comment:first-child {
                 margin-top: 2rem;
             }
 
@@ -128,6 +128,7 @@ Zero.define(
             }
 
             .commentBody {
+                margin: 0;
                 margin-top: 0.5rem;
                 word-break: break-all;
             }
